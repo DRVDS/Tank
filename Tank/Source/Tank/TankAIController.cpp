@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankAIController.h"
-
+#include "TankCpp.h"
+#include "Engine/World.h"
 
 
 ATankCpp* ATankAIController::GetControlTank() const
@@ -31,4 +32,12 @@ ATankCpp* ATankAIController::GetPlayerTank() const
 		return nullptr; 
 	}
 	return Cast<ATankCpp>(PlayerPawn);
+}
+
+void ATankAIController::Tick(float DeltaTime)
+{
+	if (GetPlayerTank())
+	{
+		GetControlTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	}
 }

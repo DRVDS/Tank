@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "Engine/World.h"
-#include "TankCpp.h"
 
 #include "TankPlayerController.generated.h"
+
+class ATankCpp;
 
 /**
  * 
@@ -41,6 +41,6 @@ private:
 	float CrossHairYLocation = 0.33f;
 
 	UPROPERTY(EditAnywhere)
-	float LineTraceRange = 10000.f;
+	float LineTraceRange = 100000.f;
 
 };

@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankPlayerController.h"
+#include "TankCpp.h"
+#include "Engine/World.h"
 
 
 void ATankPlayerController::Tick(float deltatime)
@@ -34,7 +36,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+		GetControlTank()->AimAt(HitLocation);
 	}
 }
 
@@ -75,6 +77,8 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 		HitLocation = HitResult.Location;
 		return true;
 	}
+
+	HitLocation = FVector(0.f);
 	return false;
 }
 
